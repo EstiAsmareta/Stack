@@ -1,0 +1,56 @@
+//G1A021042
+
+//Create an algorithm to push a value into a sorted stack so that the
+stack remains sorted
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Fungsi ini mengembalikan tumpukan yang diurutkan
+stack<int> sortStack(stack<int> &input)
+{
+	stack<int> tmpStack;
+
+	while (!input.empty())
+	{
+		// pop out elemen pertama
+		int tmp = input.top();
+		input.pop();
+
+		// saat tumpukan temporary tidak kosong dan top
+		// tumpukan lebih dari temp
+		while (!tmpStack.empty() && tmpStack.top() > tmp)
+		{
+			// pop dari temporary stack and push
+			//ke inputan Stack
+			input.push(tmpStack.top());
+			tmpStack.pop();
+		}
+
+		// push temp ke temporary dari stack
+		tmpStack.push(tmp);
+	}
+
+	return tmpStack;
+}
+
+// main function
+int main()
+{
+	stack<int> input;
+	input.push(34);
+	input.push(3);
+	input.push(31);
+	input.push(98);
+	input.push(92);
+	input.push(23);
+
+	stack<int> tmpStack = sortStack(input);
+	cout << "Sorted numbers are:\n";
+
+	while (!tmpStack.empty())
+	{
+		cout << tmpStack.top()<< " ";
+		tmpStack.pop();
+	}
+}
