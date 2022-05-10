@@ -1,0 +1,43 @@
+//G1A021042
+
+//Algoritma untuk mengkonversi Infix ke Postfix dan Infix ke Prefix
+
+//Algoritma Konversi Infix ke Postfix
+Langkah 0 : inisialisasi struktur data dengan membuat sebuah stack
+kosong, baca ungkapan dalam bentuk infix, dan tentukan
+derajat operator misalnya
+ ( : 0 ;+ & - : 1;* & / : 2;^ : 3
+Langkah 1 : Lakukan pembacaan karakter dari Infix, berikan ke R
+Langkah 2 : Test Nilai R, Jika
+a. ( Langsung di Push
+b. Operand, Langsung di Tulis
+c. ) lakukan Pop sampai ketemu buka kurung, tetapi
+tanda kurung tidak perlu di tulis.
+d. Operator, Jika stack dalam keadaan kosong atau
+derajat R lebih tinggi dibandingkan dengan di ujung
+stack, lakukan Push, jika tidak lakukan POP.
+Langkah 3 : Jika pembacaan terhadap infix sudah selesai, namun stack
+belum kosong lakukan POP.
+
+//Algoritma konversi Infiniz ke Prefix
+1.Scan Infix dari kanan ke kiri.
+2.Jika berupa operand, maka Push ke Stack “Pre”.
+3.Jika berupa operator, maka bandingkan operator NEW tersebut dengan TOP pada Stack “Opr”:
+  a.WHILE  precedence TOP >NEW, maka POP Stack “Opr” pindahkan  ke Stack “Pre”.
+  b.Lalu Push NEW ke dalam Stack “Opr”.4.Jika berupa “)“, maka Push “)“ ke Stack “Opr”.
+5.Jika berupa “(”, maka Pop Stack “Opr” pindahkan ke stack “Pre” sampai ketemu “)“.
+6.Ulangi terus dari langkah 1 sampai seluruh Infix sudah di-scan.
+7.POP semua isi Stack “Opr”, pindahkan ke Stack “Pre”.
+8.POP semua isi Stack “Pre”, pindahkan ke Prefix.
+
+//Evaluasi Postfix
+1.Scan Postfix dari kiri ke kanan.
+2.Jika berupa Operand, masukkan ke Stack.
+3.Jika  berupa  Operator,  Pop  Stack  2  kali  (ambil  2  operand),  hitung  hasilnya,  lalu Push lagi ke dalam Stack.
+4.Ulangi lagi sampai ujung kananPostfix.
+
+//Evaluasi Prefix
+Scan Postfix dari kanan ke kiri.
+2.Jika berupa Operand, masukkan ke Stack.
+3.Jika  berupa  Operator,  Pop  Stack  2  kali  (ambil  2  operand),  hitung  hasilnya,  lalu Push lagi ke dalam Stack.
+4.Ulangi lagi sampai ujung kanan Postfix.
